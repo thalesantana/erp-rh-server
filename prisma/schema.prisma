@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  WORKER
+}
+
+model User {
+  id               String    @id @default(uuid())
+  name             String
+  email            String    @unique
+  password_hash    String
+  role             Role      @default(WORKER)
+  position         String    
+  birthdate        DateTime  
+  is_active        Boolean   @default(true) 
+  inactive_at      DateTime? 
+  created_at       DateTime  @default(now())
+
+  time_entries     TimeEntry[]
+
+  @@map("users")
+}
+
+model TimeEntry {
+  id               String    @id @default(uuid())
+  user_id          String
+  user             User      @relation(fields: [user_id], references: [id])
+  check_in         DateTime?  
+  lunch_start      DateTime? 
+  lunch_end        DateTime? 
+  check_out        DateTime? 
+  created_at       DateTime  @default(now())
+
+  @@map("time_entries")
+}
