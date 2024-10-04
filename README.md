@@ -17,7 +17,7 @@ npm install -g pnpm
 In your terminal, clone the repository using the command:
 
 ```bash
-git clone https://github.com/thalesantana/gympass-style-app.git
+git clone https://github.com/thalesantana/erp-rh-server.git
 ```
 
 ## Installing Dependencies
@@ -25,7 +25,7 @@ git clone https://github.com/thalesantana/gympass-style-app.git
 Navigate to the project directory:
 
 ```bash
-cd gympass-style-app
+cd erp-rh-server
 ```
 
 ## Install the project dependencies with pnpm:
