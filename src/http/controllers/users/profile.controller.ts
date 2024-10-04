@@ -4,14 +4,12 @@ import { FastifyReply, FastifyRequest } from "fastify";
 export async function profile(request: FastifyRequest, reply: FastifyReply) {
   const getUseProfile = makeGetUserProfileUseCase();
 
-  const { user } = await getUseProfile.execute({
+  const user = await getUseProfile.execute({
     userId: request.user.sub,
   });
 
   return reply.status(200).send({
-    user: {
       ...user,
       password_hash: undefined,
-    },
   });
 }

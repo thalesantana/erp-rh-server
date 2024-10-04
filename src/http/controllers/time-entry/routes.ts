@@ -7,7 +7,7 @@ export async function TimeEntrysRoutes(app: FastifyInstance) {
   app.addHook("onRequest", verifyJWT);
 
   app.post(
-    "/time-entries/user/create",
+    "/time-entries/user/:userId/create",
     create,
   );
 }
